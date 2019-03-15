@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:properties/jdbc.properties"/>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <!-- Connection Info -->
+        <property name="driverClassName" value="${jdbc.mysql.driver}"/>
+        <property name="url" value="${jdbc.mysql.url}"/>
+        <property name="username" value="${jdbc.mysql.username}"/>
+        <property name="password" value="${jdbc.mysql.password}"/>
+
+        <!-- Connection Pooling Info -->
+        <property name="initialSize" value="3"/>
+        <property name="minIdle" value="3"/>
+        <property name="maxWait" value="3600"/>
+        <property name="maxActive" value="${jdbc.mysql.maxActive}"/>
+        <property name="defaultAutoCommit" value="false"/>
+        <!-- 连接Idle一个小时后超时 -->
+        <property name="timeBetweenEvictionRunsMillis" value="3600000"/>
+        <property name="minEvictableIdleTimeMillis" value="3600000"/>
+        <!-- DataSource Druid配置 -->
+        <property name="validationQuery" value="SELECT SYSDATE() FROM DUAL"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="poolPreparedStatements" value="true"/><!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+        <property name="filters" value="stat,config"/><!-- 开启druid监控支持(stat)，SQL防火墙(wall)以及SQL合并(mergeStat) -->
+        <property name="connectionProperties" value="druid.stat.slowSqlMillis=3000;config.decrypt=false"/><!-- 慢SQL标准 -->
+        <property name="removeAbandoned" value="true"/> <!-- 打开removeAbandoned功能 -->
+        <property name="removeAbandonedTimeout" value="1800"/> <!-- 1800秒，也就是30分钟 -->
+        <property name="logAbandoned" value="true"/> <!-- 关闭abanded连接时输出错误日志 -->
+    </bean>
+
+</beans>
