@@ -13,9 +13,9 @@ public class SysPermModule {
 
     private Integer seq;
 
-    private String remark;
-
     private Integer status;
+
+    private String remark;
 
     private String operator;
 
@@ -63,20 +63,20 @@ public class SysPermModule {
         this.seq = seq;
     }
 
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
-    }
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public String getOperator() {

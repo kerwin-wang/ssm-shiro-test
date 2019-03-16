@@ -31,7 +31,7 @@ public class JsonData
         return new JsonData(true);
     }
 
-    public static JsonData sucess(Object object){
+    public static JsonData success(Object object){
         JsonData jsonData = new JsonData(true);
         jsonData.setData(object);
         return jsonData;

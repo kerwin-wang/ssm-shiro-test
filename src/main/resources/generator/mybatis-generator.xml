@@ -9,16 +9,16 @@
     <!-- 一、配置数据库连接信息 -->
     <!--targetRuntime=“MyBatis3“可以生成带条件的增删改查 -->
     <!--targetRuntime=“MyBatis3Simple“可以生成基本的增删改查-->
-    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
         <!--去除注释-->
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.9.23:3306/test1?useSSL=false"
-                        userId="test"
-                        password="test">
+                        connectionURL="jdbc:mysql://localhost:3306/test1?useSSL=false"
+                        userId="test1"
+                        password="test1">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -46,14 +46,14 @@
 
         <!-- 五、table指定每个表的生成策略 -->
         <!--配置要逆向解析的数据表，tableName对应表名，domainObjectName对应javaBean名-->
-        <table tableName="sys_user" domainObjectName="SysUser"/>
-        <table tableName="sys_role_user" domainObjectName="SysRoleUser"/>
-        <table tableName="sys_dept" domainObjectName="SysDept"/>
-        <table tableName="sys_log" domainObjectName="SysLog"/>
-        <table tableName="sys_perm" domainObjectName="SysPerm"/>
-        <table tableName="sys_perm_module" domainObjectName="SysPermModule"/>
-        <table tableName="sys_role" domainObjectName="SysRole"/>
-        <table tableName="sys_role_perm" domainObjectName="SysRolePerm"/>
+        <table tableName="sys_user" domainObjectName="SysUser" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_role_user" domainObjectName="SysRoleUser" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_dept" domainObjectName="SysDept" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_log" domainObjectName="SysLog" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_perm" domainObjectName="SysPerm" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_perm_module" domainObjectName="SysPermModule" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_role" domainObjectName="SysRole" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_role_perm" domainObjectName="SysRolePerm" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
 
     </context>
 </generatorConfiguration>

@@ -49,7 +49,7 @@ public class TestController
         }catch (Exception e){
 
         }
-        return JsonData.sucess("test validator");
+        return JsonData.success("test validator");
     }
 
     @RequestMapping("testApplicationContext")
@@ -60,7 +60,7 @@ public class TestController
         SysPerm sysPerm = sysPermMapper.selectByPrimaryKey(1);
         log.info(JsonMapper.obj2String(sysPerm));
         ShiroTestValidator.check(vo);
-        return JsonData.sucess("OK");
+        return JsonData.success("OK");
 
     }
 }

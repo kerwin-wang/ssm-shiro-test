@@ -1,6 +1,7 @@
 package com.kerwin.shiro.test.web.dao;
 
 import com.kerwin.shiro.test.web.model.SysDept;
+
 import java.util.List;
 
 public interface SysDeptMapper {
@@ -8,9 +9,13 @@ public interface SysDeptMapper {
 
     int insert(SysDept record);
 
+    int insertSelective(SysDept record);
+
     SysDept selectByPrimaryKey(Integer id);
 
-    List<SysDept> selectAll();
+    int updateByPrimaryKeySelective(SysDept record);
 
     int updateByPrimaryKey(SysDept record);
+
+    List<SysDept> getAllDept();
 }
