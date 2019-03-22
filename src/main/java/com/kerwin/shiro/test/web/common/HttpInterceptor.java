@@ -1,6 +1,5 @@
 package com.kerwin.shiro.test.web.common;
 
-import com.kerwin.shiro.test.web.model.SysPerm;
 import com.kerwin.shiro.test.web.util.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.ModelAndView;

@@ -61,6 +61,5 @@ public class TestController
         log.info(JsonMapper.obj2String(sysPerm));
         ShiroTestValidator.check(vo);
         return JsonData.success("OK");
-
     }
 }

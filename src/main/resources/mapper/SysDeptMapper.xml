@@ -144,4 +144,34 @@
     <include refid="Base_Column_List" />
     from sys_dept
   </select>
+
+  <select id="getChildDeptListByLevel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_dept
+    where
+    level like  #{level} || ".%"
+  </select>
+
+  <update id="batchUpdateLevel" parameterType="map">
+    <foreach collection="sysDeptList" item="dept" separator=";">
+      update sys_dept
+      set level = #{dept.leve}
+      where id = #{dept.id}
+    </foreach>
+  </update>
+
+  <select id="countByNameAndParentId" parameterType="map" resultType="int">
+    select count(1)
+    from sys_dept
+    where
+    name = #{name}
+    <if test="parentId != null">
+      and parent_id = #{parentId}
+    </if>
+    <if test="id != null">
+      and id != #{id} /*做插入校验时，id为空，不必作为条件，做更新校验时，如果更新条目外存在其他的，则不更新*/
+    </if>
+  </select>
+
 </mapper>

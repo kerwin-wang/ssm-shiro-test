@@ -31,10 +31,18 @@ public class SysDeptController
     @Resource
     private SysTreeService sysTreeServiceImpl;
 
-    @RequestMapping("/saveDept")
+
     @ResponseBody
+    @RequestMapping("/saveDept")
     public JsonData saveSysDept(DeptVo deptVo){
         sysDeptServiceImpl.saveDept(deptVo);
+        return JsonData.success();
+    }
+
+    @RequestMapping("/updateDept")
+    @ResponseBody
+    public JsonData updateDept(DeptVo deptVo){
+        sysDeptServiceImpl.updateDept(deptVo);
         return JsonData.success();
     }
 
