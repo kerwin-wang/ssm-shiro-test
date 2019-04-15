@@ -3,7 +3,7 @@
 <mapper namespace="com.kerwin.shiro.test.web.dao.SysUserMapper" >
   <resultMap id="BaseResultMap" type="com.kerwin.shiro.test.web.model.SysUser" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
     <result column="mail" property="mail" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -15,7 +15,7 @@
     <result column="operate_ip" property="operateIp" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, telephone, mail, password, dept_id, status, remark, operator, operate_time, 
+    id, user_name, telephone, mail, password, dept_id, status, remark, operator, operate_time, 
     operate_ip
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -29,11 +29,11 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.kerwin.shiro.test.web.model.SysUser" >
-    insert into sys_user (id, username, telephone, 
+    insert into sys_user (id, user_name, telephone, 
       mail, password, dept_id, 
       status, remark, operator, 
       operate_time, operate_ip)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
       #{mail,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, 
       #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
       #{operateTime,jdbcType=TIMESTAMP}, #{operateIp,jdbcType=VARCHAR})
@@ -44,8 +44,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="username != null" >
-        username,
+      <if test="userName != null" >
+        user_name,
       </if>
       <if test="telephone != null" >
         telephone,
@@ -79,8 +79,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
       </if>
       <if test="telephone != null" >
         #{telephone,jdbcType=VARCHAR},
@@ -114,8 +114,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.kerwin.shiro.test.web.model.SysUser" >
     update sys_user
     <set >
-      <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="telephone != null" >
         telephone = #{telephone,jdbcType=VARCHAR},
@@ -149,7 +149,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kerwin.shiro.test.web.model.SysUser" >
     update sys_user
-    set username = #{username,jdbcType=VARCHAR},
+    set user_name = #{userName,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=VARCHAR},
       mail = #{mail,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
