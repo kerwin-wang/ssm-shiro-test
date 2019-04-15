@@ -13,17 +13,17 @@ import javax.validation.ValidatorFactory;
 import java.util.*;
 
 /**
- * @ClassName: ShiroTestValidator
+ * @ClassName: BeanValidator
  * @Description:
  * @version: v1.0.0
  * @Author: d.wang
  * @Date: 2019-03-13 15:55
  */
-public class ShiroTestValidator
+public class BeanValidator
 {
     private static ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
 
-    public static <T> Map<String,String> validate(T t,Class... groups){
+    private static <T> Map<String,String> validate(T t, Class... groups){
         Validator validator = validatorFactory.getValidator();
         Set<ConstraintViolation<T>> validateResult = validator.validate(t, groups);
         if (validateResult.isEmpty()){
@@ -39,7 +39,7 @@ public class ShiroTestValidator
         }
     }
 
-    public static Map<String,String> validate(Collection<?> collection){
+    private static Map<String,String> validate(Collection<?> collection){
         Preconditions.checkNotNull(collection);
         Iterator<?> iterator = collection.iterator();
         Map<String,String> errors;
@@ -62,7 +62,7 @@ public class ShiroTestValidator
     }
 
     public static void check(Object object){
-        Map<String, String> map = ShiroTestValidator.validateObject(object);
+        Map<String, String> map = BeanValidator.validateObject(object);
         if (MapUtils.isNotEmpty(map)){
             throw new ParamException(map.toString());
         }

@@ -5,7 +5,7 @@ import com.kerwin.shiro.test.web.common.JsonData;
 import com.kerwin.shiro.test.web.dao.SysPermMapper;
 import com.kerwin.shiro.test.web.model.SysPerm;
 import com.kerwin.shiro.test.web.util.JsonMapper;
-import com.kerwin.shiro.test.web.validator.ShiroTestValidator;
+import com.kerwin.shiro.test.web.validator.BeanValidator;
 import com.kerwin.shiro.test.web.vo.TestVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -39,7 +39,7 @@ public class TestController
         log.info("test validator");
         try
         {
-            Map<String, String> map = ShiroTestValidator.validateObject(testVo);
+            Map<String, String> map = BeanValidator.validateObject(testVo);
             if (map != null && map.entrySet().size() >0 ){
                 for (Map.Entry<String, String> stringEntry : map.entrySet())
                 {
@@ -59,7 +59,7 @@ public class TestController
         SysPermMapper sysPermMapper = ApplicationContextHelper.popBean(SysPermMapper.class);
         SysPerm sysPerm = sysPermMapper.selectByPrimaryKey(1);
         log.info(JsonMapper.obj2String(sysPerm));
-        ShiroTestValidator.check(vo);
+        BeanValidator.check(vo);
         return JsonData.success("OK");
     }
 }

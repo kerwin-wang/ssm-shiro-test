@@ -11,7 +11,7 @@ import com.kerwin.shiro.test.web.vo.DeptVo;
  */
 public interface SysDeptService
 {
-    void saveDept(DeptVo deptVo);
+    void save(DeptVo deptVo);
 
-    void updateDept(DeptVo deptVo);
+    void update(DeptVo deptVo);
 }
